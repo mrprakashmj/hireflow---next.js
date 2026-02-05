@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  /* Design tokens */
+  --font-jakarta: var(--font-jakarta);
+  --color-brand-dark: #083c44;
+  --color-brand-teal: #0A4D56;
+  --color-brand-cyan: #3BD0D8;
+  --color-brand-blue: #2A9D8F;
+
+  /* Theme colors */
+  --background: #0A4D56;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.industry-sticky-card {
+  position: sticky;
+  top: 130px;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease-out;
+}
+
+.industry-sticky-card:nth-child(2) {
+  top: 150px;
+}
+
+.industry-sticky-card:nth-child(3) {
+  top: 170px;
+}
+
+.industry-image-area {
+  transition: transform 0.5s ease-out;
+}
+
+.industry-sticky-card:hover .industry-image-area {
+  transform: translateY(-5px);
+}
