@@ -47,7 +47,7 @@ export function Testimonials({
                                     className="section-subtitle-icon w-5 h-5"
                                 />
                             </div>
-                            <p className="section-subtitle text-[#218196] text-sm font-medium uppercase tracking-wider">
+                            <p className="section-subtitle text-[#218196] text-lg font-medium uppercase tracking-wider">
                                 Testimonials
                             </p>
                         </div>

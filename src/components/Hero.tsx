@@ -8,15 +8,13 @@ export function Hero() {
         <div className="home-banner-wrap bg-[#085263]">
             <section className="home-banner-section pt-8 pb-0 lg:pb-0 relative overflow-hidden">
                 {/* Background Vector Decoration */}
-                {/* <div className="absolute -right-32 -bottom-32 lg:right-0 lg:bottom-0 w-[600px] h-[600px] opacity-80 pointer-events-none z-0">
-                    <Image
+                <div className="hero-pattern absolute bottom-[-425px] right-[143px] w-full opacity-100 pointer-events-none z-0">
+                    <img
                         src="/images/Vector 7.svg"
                         alt="Decorative vector"
-                        fill
-                        className="object-contain"
-                        priority={false}
-                    />``
-                </div> */}
+                        className="w-full h-auto"
+                    />
+                </div>
 
                 <div className="container mx-auto px-4 max-w-[1200px] relative z-10">
                     <div className="home-banner-area flex flex-col lg:flex-row items-start gap-10 lg:gap-16">

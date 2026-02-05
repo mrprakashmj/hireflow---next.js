@@ -36,7 +36,7 @@ export function CoreFeatures({
                 <div className="flex flex-col items-center gap-4 text-center max-w-[700px]">
                     <div className="flex items-center gap-2">
                         <Image src="/images/bullet.svg" alt="" width={15} height={15} className="w-[15px] h-[15px]" />
-                        <span className="text-[14px] font-medium uppercase text-[#218196] tracking-wider">{headerSubtitle}</span>
+                        <span className="text-lg font-medium uppercase text-[#218196] tracking-wider">{headerSubtitle}</span>
                     </div>
                     <h2 className="text-[42px] lg:text-[54px] font-medium leading-[120%] tracking-[-0.03em] text-[#021A1F]">
                         {headerTitle}

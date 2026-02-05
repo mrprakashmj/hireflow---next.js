@@ -96,11 +96,13 @@ export function SystemOverview({
                                         <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-[#021A1F] transition-colors">{item.title}</h3>
                                         <ChevronRight className={`w-5 sm:w-6 h-5 sm:h-6 text-brand-blue transition-transform duration-300 ${openItem === index ? 'rotate-90' : 'rotate-0'}`} />
                                     </div>
-                                    {openItem === index && (
-                                        <p className="text-sm sm:text-base text-gray-600 mt-3 sm:mt-4 leading-relaxed block animate-fade-in-up">
-                                            {item.description}
-                                        </p>
-                                    )}
+                                    <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${openItem === index ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                                        <div className="overflow-hidden">
+                                            <p className="text-sm sm:text-base text-gray-600 mt-3 sm:mt-4 leading-relaxed">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             ))}
                         </div>

@@ -17,7 +17,7 @@ export function Navbar() {
 
     // Background colors matching each page's hero section
     // Home: dark teal #085263, Other pages: light peach #FFF2EB
-    const navbarBgColor = hasDarkBackground ? 'rgba(8, 82, 99, 0.95)' : 'rgba(255, 242, 235, 0.95)';
+    const navbarBgColor = hasDarkBackground ? '#085263' : '#FFF2EB';
 
     // Logo paths
     const logoSrc = hasDarkBackground ? '/images/icon/logo.svg' : '/images/icon/logo-dark.svg';
@@ -55,7 +55,7 @@ export function Navbar() {
                 <Link href="/" className="flex items-center flex-shrink-0">
                     <img src={logoSrc} alt="HireFlow Logo" width={171} height={27} className="w-36 h-16 object-contain" />
                 </Link>
-                
+
                 {/* Navigation Links - Hidden on mobile */}
                 <div className={`hidden lg:flex items-center gap-8 sm:gap-12 transition-colors ${textColorClass}`}>
                     <Link href="/" className={`text-lg ${hoverColorClass} transition-colors`}>Home</Link>
@@ -129,7 +129,7 @@ export function Navbar() {
 
             {/* Mobile Menu */}
             {mobileMenuOpen && (
-                <div className="lg:hidden bg-opacity-95 backdrop-blur-sm" style={{ backgroundColor: hasDarkBackground ? 'rgba(8, 82, 99, 0.95)' : 'rgba(255, 255, 255, 0.95)' }}>
+                <div className="lg:hidden" style={{ backgroundColor: hasDarkBackground ? '#085263' : '#FFF2EB' }}>
                     <div className="container mx-auto px-4 sm:px-6 max-w-7xl py-4 space-y-2">
                         <Link href="/" className={`block px-4 py-2 rounded-lg text-sm font-medium ${textColorClass} ${hoverColorClass} transition-colors`} onClick={() => setMobileMenuOpen(false)}>
                             Home

@@ -46,13 +46,13 @@ export function IndustryServed({
                         <div className="section-subtitle-wrap flex items-center justify-center gap-2">
                             <div className="section-subtitle-icon-wrap">
                                 <img
-                                    src="/images/bullet.svg"
+                                    src="/images/incondark.svg"
                                     loading="lazy"
                                     alt="Section subtitle dark symbol"
                                     className="section-subtitle-icon w-5 h-5"
                                 />
                             </div>
-                            <p className="section-subtitle text-[#36C9EB] text-sm font-medium uppercase tracking-wider">
+                            <p className="section-subtitle text-[#36C9EB] text-lg font-medium uppercase tracking-wider">
                                 {subtitle}
                             </p>
                         </div>
