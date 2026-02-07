@@ -21,8 +21,8 @@ export type CaseStudyProps = {
 };
 
 export function CaseStudy({
-    subtitle = "Client Stories",
-    title = "Driving success through smarter HR solutions",
+    subtitle = "Success Story",
+    title = "Latest Case Studies",
     buttonText = "View All Case Studies",
     buttonLink = "/case-study",
     items = [
@@ -89,6 +89,7 @@ export function CaseStudy({
                                         alt={item.title}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        unoptimized
                                     />
                                 ) : null}
 

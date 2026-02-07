@@ -1,0 +1,1 @@
+self.__BUILD_MANIFEST = (function(a){return {__rewrites:{afterFiles:[{has:a,source:"\u002Fmedia\u002F:path*",destination:"\u002Fapi\u002Fmedia\u002Ffile\u002F:path*"}],beforeFiles:[],fallback:[]},__routerFilterStatic:a,__routerFilterDynamic:a,sortedPages:["\u002F_app"]}}(void 0));self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()

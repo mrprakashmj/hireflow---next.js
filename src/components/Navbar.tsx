@@ -12,7 +12,7 @@ export function Navbar() {
     const [lastScrollY, setLastScrollY] = useState(0);
 
     // Define which pages have dark backgrounds (need white text)
-    const darkBgPages = ['/'];
+    const darkBgPages = ['/', '/case-study'];
     const hasDarkBackground = darkBgPages.includes(pathname);
 
     // Background colors matching each page's hero section

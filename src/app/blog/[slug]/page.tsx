@@ -6,6 +6,9 @@ import { RelatedPosts } from '@/components/RelatedPosts';
 import { BlogCTA } from '@/components/BlogCTA';
 import { getBlogPostBySlug, getRelatedPosts, getAllBlogPosts } from '@/data/blog-data';
 
+// Allow dynamic rendering for CMS content
+export const dynamic = 'force-dynamic';
+
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = await getBlogPostBySlug(slug);
@@ -40,11 +43,15 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     );
 }
 
-// Generate static params for all blog posts
+// Generate static params for all blog posts (includes both CMS and local posts)
 export async function generateStaticParams() {
-    const posts = await getAllBlogPosts();
-
-    return posts.map((post) => ({
-        slug: post.slug,
-    }));
+    try {
+        const posts = await getAllBlogPosts();
+        return posts.map((post) => ({
+            slug: post.slug,
+        }));
+    } catch {
+        // Return empty array if fetching fails, allowing dynamic rendering
+        return [];
+    }
 }

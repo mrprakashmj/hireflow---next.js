@@ -1,3 +1,13 @@
+import {
+    fetchBlogPosts,
+    fetchBlogPostBySlug,
+    fetchRelatedPosts,
+    isPayloadCMSAvailable,
+    getImageUrl,
+    formatDate,
+    type PayloadBlogPost,
+} from '@/lib/payload';
+
 export type BlogPost = {
     slug: string;
     title: string;
@@ -109,7 +119,7 @@ export const localBlogPosts: BlogPost[] = [
         title: "Enhancing Employee Experience Through HRM Solutions",
         category: "Automation",
         date: "07 Nov 2025",
-        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop",
+        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f21d?w=800&h=600&fit=crop",
         subtitle: "Modern HRM solutions put employees first, creating engaging experiences that drive retention and satisfaction.",
         overview: "Employee experience has become a critical differentiator in attracting and retaining top talent. Traditional HR systems often frustrate employees with complex processes and limited access to information. Our HRM solutions flip this paradigm, delivering consumer-grade experiences that empower employees, streamline interactions, and foster a culture of engagement and satisfaction.",
         obstacles: [
@@ -124,17 +134,81 @@ export const localBlogPosts: BlogPost[] = [
     }
 ];
 
+/**
+ * Transform Payload CMS blog post to local BlogPost format
+ */
+function transformPayloadPost(post: PayloadBlogPost): BlogPost {
+    return {
+        slug: post.slug,
+        title: post.title,
+        category: post.category,
+        date: formatDate(post.date),
+        image: getImageUrl(post.image, 'card'),
+        subtitle: post.subtitle,
+        overview: post.overview,
+        obstacles: post.obstacles?.map(o => o.point) || [],
+        outcomes: post.outcomes,
+        summary: post.summary,
+        contentImage: post.contentImage ? getImageUrl(post.contentImage, 'hero') : undefined,
+    };
+}
+
+/**
+ * Get a blog post by slug
+ * Tries Payload CMS first, falls back to local data
+ */
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
+    // Try Payload CMS first
+    const cmsAvailable = await isPayloadCMSAvailable();
+
+    if (cmsAvailable) {
+        const payloadPost = await fetchBlogPostBySlug(slug);
+        if (payloadPost) {
+            return transformPayloadPost(payloadPost);
+        }
+    }
+
+    // Fallback to local data
     return localBlogPosts.find(post => post.slug === slug);
 }
 
+/**
+ * Get related posts by category
+ * Tries Payload CMS first, falls back to local data
+ */
 export async function getRelatedPosts(currentSlug: string, category: string, limit: number = 3): Promise<BlogPost[]> {
+    // Try Payload CMS first
+    const cmsAvailable = await isPayloadCMSAvailable();
+
+    if (cmsAvailable) {
+        const payloadPosts = await fetchRelatedPosts(currentSlug, category, limit);
+        if (payloadPosts.length > 0) {
+            return payloadPosts.map(transformPayloadPost);
+        }
+    }
+
+    // Fallback to local data
     return localBlogPosts
         .filter(post => post.slug !== currentSlug && post.category === category)
         .slice(0, limit);
 }
 
+/**
+ * Get all blog posts
+ * Tries Payload CMS first, falls back to local data
+ */
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
+    // Try Payload CMS first
+    const cmsAvailable = await isPayloadCMSAvailable();
+
+    if (cmsAvailable) {
+        const payloadPosts = await fetchBlogPosts();
+        if (payloadPosts.length > 0) {
+            return payloadPosts.map(transformPayloadPost);
+        }
+    }
+
+    // Fallback to local data
     return localBlogPosts;
 }
 

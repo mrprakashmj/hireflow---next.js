@@ -15,6 +15,10 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "HireFlow - Effortless HR Solutions",
   description: "Streamline HR, boost productivity, and simplify workforce management.",
+  icons: {
+    icon: "/images/Briefcase.png",
+    apple: "/images/Briefcase.png",
+  },
 };
 
 import { Navbar } from "@/components/Navbar";
